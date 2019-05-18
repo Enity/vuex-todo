@@ -1,11 +1,6 @@
 export default {
   state: {
     todos: [
-      {
-        id: 1,
-        title: '',
-        completed: false
-      }
     ]
   },
   mutations: {

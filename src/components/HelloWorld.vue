@@ -29,7 +29,9 @@ export default {
     },
   computed: {
       getTodo () {
+        if (this.newTodoText != '') {
         return this.$store.getters.computedTodo
+        }
       }
     },
   methods: {
