@@ -16,7 +16,7 @@
 <script>
 
 export default {
-  name: 'HelloWorld',
+  name: 'todo',
   props: {
     msg: String
   },
@@ -38,6 +38,7 @@ export default {
         const payload = {'id':newId, 'title': newTodoText, 'completed': false}
         if (newTodoText.length)
         this.$store.dispatch('AddActionTodo', payload)
+        this.newTodoText = ""
       },
       deleteTodo (id){
         return this.$store.dispatch('DeleteActionTodo', id)

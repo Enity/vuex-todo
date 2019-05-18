@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <HelloWorld/>
+    <todo/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import todo from './components/todo.vue'
 import store from './store/index.js'
 
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    todo
   },
   store
 }
