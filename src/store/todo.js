@@ -4,8 +4,7 @@ export default {
     ]
   },
   mutations: {
-    changeTodo (state, payload) {
-      console.log(state.todos)
+    changeTodo (state, payload) {     
       state.todos.push(
       { 
         id: payload.id,

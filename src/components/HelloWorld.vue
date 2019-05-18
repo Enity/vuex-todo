@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
   <div>
-  <input type="text" v-model="newTodoText"/>
+  <input type="text" v-model="newTodoText" @keyup.enter="addTodo(newTodoText)"/>
   <button @click="addTodo(newTodoText)">Add</button>
   </div>
   <div v-for="(list) in getTodo" :key="list.id" class="content">
@@ -28,17 +28,16 @@ export default {
         };
     },
   computed: {
-      getTodo () {
-        if (this.newTodoText != '') {
-        return this.$store.getters.computedTodo
-        }
+      getTodo () {  
+     return this.$store.getters.computedTodo      
       }
     },
   methods: {
       addTodo (newTodoText) {
-        const payload = {'id':this.id++, 'title': newTodoText, 'completed': false}
+        const newId = Date.now() + Math.random()
+        const payload = {'id':newId, 'title': newTodoText, 'completed': false}
         if (newTodoText.length)
-        return this.$store.dispatch('AddActionTodo', payload)
+        this.$store.dispatch('AddActionTodo', payload)
       },
       deleteTodo (id){
         return this.$store.dispatch('DeleteActionTodo', id)
@@ -46,11 +45,7 @@ export default {
       toggleTodo(id){
         return this.$store.dispatch('ToggleTodo', id)
       }
-    },
- mountend() {
-        return this.$store.getters.computedTodo
-  }
-
+    }
 }
  
   
