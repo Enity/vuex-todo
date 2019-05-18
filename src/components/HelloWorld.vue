@@ -4,9 +4,10 @@
   <input type="text" v-model="newTodoText"/>
   <button @click="addTodo(newTodoText)">Add</button>
   </div>
-  <div v-for="(list, index) in getTodo" :key="list.index" class="content">
- <p>{{list}}</p>
- <button @click="deleteTodo(index)">☓</button>
+  <div v-for="(list) in getTodo" :key="list.id" class="content">
+ <p :class="{'completed': list.completed}">{{list.title}}</p>
+ <button @click="deleteTodo(list.id)">☓</button>
+ <button @click="toggleTodo(list.id)">+</button>
   </div>
 
   </div>
@@ -21,7 +22,9 @@ export default {
   },
     data() {
         return {
-        newTodoText: ''
+        id: 0,
+        newTodoText: '',
+        completed: true
         };
     },
   computed: {
@@ -31,10 +34,15 @@ export default {
     },
   methods: {
       addTodo (newTodoText) {
-        return this.$store.dispatch('AddActionTodo', newTodoText);
+        const payload = {'id':this.id++, 'title': newTodoText, 'completed': false}
+        if (newTodoText.length)
+        return this.$store.dispatch('AddActionTodo', payload)
       },
-      deleteTodo (index){
-        return this.$store.dispatch('DeleteActionTodo', index)
+      deleteTodo (id){
+        return this.$store.dispatch('DeleteActionTodo', id)
+      },
+      toggleTodo(id){
+        return this.$store.dispatch('ToggleTodo', id)
       }
     },
  mountend() {
@@ -48,6 +56,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.completed {
+  text-decoration: line-through;
+}
+
 .content {
   display: flex;
   justify-content: center;
