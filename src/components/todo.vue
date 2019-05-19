@@ -56,6 +56,7 @@ export default {
 <style scoped>
 .completed {
   text-decoration: line-through;
+  color: rgb(182, 174, 174);
 }
 
 .content {

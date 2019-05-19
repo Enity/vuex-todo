@@ -5,10 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "jest"
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "lodash": "^4.17.11",
     "vue": "^2.6.10",
     "vuex": "^3.1.0",
     "vuex-persistedstate": "^2.5.4"
@@ -17,9 +19,12 @@
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "jest": "^24.8.0",
+    "vue-jest": "^3.0.4",
     "vue-template-compiler": "^2.5.21"
   },
   "eslintConfig": {
@@ -39,6 +44,16 @@
   "postcss": {
     "plugins": {
       "autoprefixer": {}
+    }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     }
   },
   "browserslist": [
