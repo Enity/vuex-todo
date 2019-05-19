@@ -10,7 +10,7 @@ test('добавляет в стейт нужный объект после из
   expect(store.state).toBe([])
   const payload = {'id':'20', 'title': 'todotext', 'completed': false}
   store.commit('changeTodo', payload)
-  expect(store.state).toBe({'id':'20', 'title': 'todotext', 'completed': false})
+  expect(store.state).toBe([{'id':'20', 'title': 'todotext', 'completed': false}])
 })
 
 test('обновляет геттер computedTodo, когда происходит добавление в тодо', () => {
@@ -20,5 +20,5 @@ test('обновляет геттер computedTodo, когда происход�
   expect(store.getters.computedTodo).toBe('even')
   const payload = {'id':'20', 'title': 'todotext', 'completed': false}
   store.commit('changeTodo', payload)
-  expect(store.getters.computedTodo).toBe({'id':'20', 'title': 'todotext', 'completed': false})
+  expect(store.getters.computedTodo).toBe([{'id':'20', 'title': 'todotext', 'completed': false}])
 })
