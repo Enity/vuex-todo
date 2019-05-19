@@ -17,7 +17,7 @@ test('обновляет геттер computedTodo, когда происход�
   const localVue = createLocalVue()
   localVue.use(Vuex)
   const store = new Vuex.Store(cloneDeep(todo))
-  expect(store.getters.computedTodo).toBe('even')
+  expect(store.getters.computedTodo).toBe([])
   const payload = {'id':'20', 'title': 'todotext', 'completed': false}
   store.commit('changeTodo', payload)
   expect(store.getters.computedTodo).toBe([{'id':'20', 'title': 'todotext', 'completed': false}])
