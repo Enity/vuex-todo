@@ -28,28 +28,28 @@ export default {
         };
     },
   computed: {
-      getTodo () {  
-     return this.$store.getters.computedTodo      
+      getTodo () {
+     return this.$store.getters.computedTodo
       }
     },
   methods: {
       addTodo (newTodoText) {
-        const newId = Date.now() + Math.random()
-        const payload = {'id':newId, 'title': newTodoText, 'completed': false}
+        const newId = Date.now() + Math.random();
+        const payload = {'id':newId, 'title': newTodoText, 'completed': false};
         if (newTodoText.length)
-        this.$store.dispatch('AddActionTodo', payload)
+        this.$store.dispatch('addTodo', payload);
         this.newTodoText = ""
       },
       deleteTodo (id){
-        return this.$store.dispatch('DeleteActionTodo', id)
+        return this.$store.dispatch('deleteTodo', id)
       },
       toggleTodo(id){
-        return this.$store.dispatch('ToggleTodo', id)
+        return this.$store.dispatch('toggleTodo', id)
       }
     }
 }
- 
-  
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
